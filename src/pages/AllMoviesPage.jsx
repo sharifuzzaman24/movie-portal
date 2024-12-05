@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import MovieCard from '../components/MovieCard';
 
 const AllMoviesPage = () => {
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/movies')
+            .then(res => res.json())
+            .then(data => setMovies(data))
+            .catch(error => console.error('Error fetching movies:', error));
+    }, []);
+    
+    console.log(movies)
+
     return (
         <>
             <header>
@@ -18,16 +30,11 @@ const AllMoviesPage = () => {
                     </div>
 
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
-                            <img src="https://source.unsplash.com/random/400x300?movie" alt="Movie Poster" className="rounded-t-lg" />
-                            <div className="p-6">
-                                <h3 className="text-lg font-bold mb-2">Movie Title</h3>
-                                <p className="text-sm mb-4">Genre: Drama | Duration: 120 min | Rating: 4.5 ⭐</p>
-                                <a href="movie-details.html" className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">See Details</a>
-                            </div>
-                        </div>
+                        {
+                            movies.map(movie => <MovieCard movie={movie} key={movie._id}></MovieCard>)
+                        }
 
                     </div>
                 </section>
