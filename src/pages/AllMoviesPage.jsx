@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import MovieCard from '../components/MovieCard';
+import { useLoaderData } from 'react-router-dom';
 
 const AllMoviesPage = () => {
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:8000/movies')
-            .then(res => res.json())
-            .then(data => setMovies(data))
-            .catch(error => console.error('Error fetching movies:', error));
-    }, []);
     
-    console.log(movies)
+    const movies = useLoaderData();
 
     return (
         <>
@@ -21,7 +13,7 @@ const AllMoviesPage = () => {
                 <Navbar></Navbar>
             </header>
             <main className='w-11/12 mx-auto'>
-                <section className="pt-20 container mx-auto px-4 min-h-screen">
+                <section className="pt-20 mb-20 container mx-auto px-4 min-h-screen">
                     <h1 className="text-3xl font-bold text-center mt-10 mb-8">All Movies</h1>
 
 

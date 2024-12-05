@@ -33,10 +33,12 @@ const router = createBrowserRouter([
   {
     path: "/all-movies",
     element: <AllMoviesPage></AllMoviesPage>,
+    loader: () => fetch('http://localhost:5000/movies')
   },
   {
-    path: "/movies/:id",
-    element: <MovieDetailsPage></MovieDetailsPage>,
+    path: "/movie-details/:id",
+    element: <MovieDetailsPage />,
+    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
   },
   {
     path: "/add-movie",

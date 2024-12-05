@@ -105,7 +105,7 @@ const AddMoviePage = () => {
                 rating,
             };
 
-            // Submit movie data (POST request)
+          
             fetch('http://localhost:8000/movies', {
                 method: 'POST',
                 headers: {
