@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
 
 
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <h3 className="text-2xl font-semibold text-white mb-4">{movie.title}</h3>
+        <h3 className="text-2xl text-center font-semibold text-white mb-4">{movie.title}</h3>
         {
           movie.genres.map((genre, idx) => <p key={idx} className='text-white mb-2'>{genre}</p>)
         }

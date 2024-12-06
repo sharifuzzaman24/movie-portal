@@ -56,7 +56,7 @@ const MovieDetailsPage = () => {
 
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold mb-4">{movie.title}</h1>
-                            <p className="mb-4">Genre: {movie.genres.map((genre, idx) => <span key={idx}>{genre}, </span>)}</p>
+                            <p className='mb-4'>{movie.genres.join(', ')}</p>
                             <p className="mb-4">Duration: {movie.duration} minutes</p>
                             <p className="mb-4">Release Year: {movie.releaseYear}</p>
                             <p className="mb-4 flex items-center gap-3">Rating:  <div className="rating">

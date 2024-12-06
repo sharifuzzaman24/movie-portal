@@ -14,7 +14,7 @@ const AllMoviesPage = () => {
             </header>
             <main className='w-11/12 mx-auto'>
                 <section className="pt-20 mb-20 container mx-auto px-4 min-h-screen">
-                    <h1 className="text-3xl font-bold text-center mt-10 mb-8">All Movies</h1>
+                    <h1 className="text-3xl font-bold text-center mt-12 mb-8">All Movies</h1>
 
 
                     <div className="flex justify-center mb-8">

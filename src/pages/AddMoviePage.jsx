@@ -4,13 +4,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../context/AuthProvider';
 
 const AddMoviePage = () => {
     const [rating, setRating] = useState(0);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [formErrors, setFormErrors] = useState({});
-    const {user} = useContext(AuthContext);
 
     const genres = [
         "Action",
@@ -105,7 +103,6 @@ const AddMoviePage = () => {
                 releaseYear: form.releaseYear.value,
                 summary: form.summary.value,
                 rating,
-                userEmail: user.email,
             };
 
           
@@ -147,7 +144,7 @@ const AddMoviePage = () => {
             </header>
             <main className="w-11/12 mx-auto">
                 <section className="pt-20 container mx-auto px-4 min-h-screen">
-                    <h1 className="text-3xl font-bold text-center mt-10 mb-8">Add a New Movie</h1>
+                    <h1 className="text-3xl font-bold text-center mt-12 mb-8">Add a New Movie</h1>
 
                     <form onSubmit={handleSubmit} className="flex flex-col mx-auto items-center justify-center gap-y-5 w-2/4 mb-20">
                         <div className="w-full">
