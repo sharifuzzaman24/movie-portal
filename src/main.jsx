@@ -17,6 +17,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import UpdateMoviePage from './pages/UpdateMoviePage';
 import AuthProvider from './context/AuthProvider';
+import MovieNews from './pages/MovieNewsPage';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/favorites",
     element: <FavoritesPage></FavoritesPage>,
+  },
+  {
+    path: "/movie-news",
+    element: <MovieNews></MovieNews>,
   },
   {
     path: "*",
