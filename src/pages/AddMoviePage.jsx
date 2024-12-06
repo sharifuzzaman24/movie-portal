@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../context/AuthProvider';
 
 const AddMoviePage = () => {
     const [rating, setRating] = useState(0);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [formErrors, setFormErrors] = useState({});
+    const {user} = useContext(AuthContext);
 
     const genres = [
         "Action",
@@ -103,10 +105,11 @@ const AddMoviePage = () => {
                 releaseYear: form.releaseYear.value,
                 summary: form.summary.value,
                 rating,
+                userEmail: user.email,
             };
 
           
-            fetch('http://localhost:8000/movies', {
+            fetch('http://localhost:5000/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

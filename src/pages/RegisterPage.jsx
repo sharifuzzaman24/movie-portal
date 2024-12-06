@@ -20,14 +20,14 @@ const RegisterPage = () => {
         const password = form.password.value;
 
         try {
-            // Create user with email and password
+            
             const result = await createUser(email, password);
-            setUser(result.user); // Update user in context
+            setUser(result.user); 
 
-            // Update the user's profile
+            
             await updateUserProfile({ displayName: name, photoURL: photo });
 
-            // Success feedback
+            
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -36,7 +36,7 @@ const RegisterPage = () => {
                 timer: 1500,
             });
 
-            // Navigate to the homepage
+           
             navigate('/');
         } catch (error) {
             console.error("Registration error:", error.message);
