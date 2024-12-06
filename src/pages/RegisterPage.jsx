@@ -1,51 +1,49 @@
 import React, { useContext } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
-import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const RegisterPage = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        createUser(email, password)
-            .then((result) => {
-                const newUser = { name, photo, email }
-                fetch('http://localhost:5000/users', {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(newUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: "User created successfully!",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        }
-                        form.reset();
-                    })
-            })
-            .catch((error) => {
-                toast.error('failed to create user')
 
+        try {
+            // Create user with email and password
+            const result = await createUser(email, password);
+            setUser(result.user); // Update user in context
+
+            // Update the user's profile
+            await updateUserProfile({ displayName: name, photoURL: photo });
+
+            // Success feedback
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User registered successfully!",
+                showConfirmButton: false,
+                timer: 1500,
             });
-    }
+
+            // Navigate to the homepage
+            navigate('/');
+        } catch (error) {
+            console.error("Registration error:", error.message);
+            toast.error(`Failed to register: ${error.message}`);
+        }
+    };
+    
 
     return (
         <>

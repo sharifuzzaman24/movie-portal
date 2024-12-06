@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+
     return (
         <div className='w-full bg-gray-800 shadow-md fixed z-10 top-0'>
             <div className="w-11/12 navbar mx-auto py-4">
@@ -35,16 +40,42 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex justify-between items-center gap-5 px-1">
-                    <li><NavLink to={'/'} className='hover:text-red-600 cursor-pointer'>Home</NavLink></li>
-                            <li><NavLink to={'/all-movies'} className='hover:text-red-600 cursor-pointer'>All Movies</NavLink></li>
-                            <li><NavLink to={'/add-movie'} className='hover:text-red-600 cursor-pointer'>Add Movie</NavLink></li>
-                            <li><NavLink to={'/favorites'} className='hover:text-red-600 cursor-pointer'>My Favorites</NavLink></li>
-                            <li><a className='hover:text-red-600 cursor-pointer'>Movie News</a></li>
+                        <li><NavLink to={'/'} className='hover:text-red-600 cursor-pointer'>Home</NavLink></li>
+                        <li><NavLink to={'/all-movies'} className='hover:text-red-600 cursor-pointer'>All Movies</NavLink></li>
+                        <li><NavLink to={'/add-movie'} className='hover:text-red-600 cursor-pointer'>Add Movie</NavLink></li>
+                        <li><NavLink to={'/favorites'} className='hover:text-red-600 cursor-pointer'>My Favorites</NavLink></li>
+                        <li><a className='hover:text-red-600 cursor-pointer'>Movie News</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end flex items-center gap-5">
-                    <Link to={'/login'} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer">Login</Link>
-                    <Link to={'/register'} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 cursor-pointer">Register</Link>
+                <div className="navbar-end">
+                    
+
+                    {
+                        user && user?.email ? <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="Tailwind CSS Navbar component"
+                                    src={user?.photoURL} />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-gray-800 rounded-lg z-[1] mt-5 w-52 p-2 shadow">
+                            <li>
+                                <a className="justify-between">Profile</a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li><a onClick={logOut}>Logout</a></li>
+                        </ul>
+                    </div>:<div className=' flex items-center gap-5'>
+                        <Link to={'/login'} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer">Login</Link>
+                        <Link to={'/register'} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 cursor-pointer">Register</Link>
+                        </div>
+                    }
+
+                    
+
                 </div>
             </div>
         </div>
