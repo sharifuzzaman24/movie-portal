@@ -20,16 +20,19 @@ const AuthProvider = ({children}) => {
     }
 
     const updateUserProfile = (updatedData) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, updatedData)
     }
     
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            setLoading(false)
         })
         return () => {
             unSubscribe();

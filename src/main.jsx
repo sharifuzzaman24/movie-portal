@@ -18,6 +18,7 @@ import RegisterPage from './pages/RegisterPage';
 import UpdateMoviePage from './pages/UpdateMoviePage';
 import AuthProvider from './context/AuthProvider';
 import MovieNews from './pages/MovieNewsPage';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -39,20 +40,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/movie-details/:id",
-    element: <MovieDetailsPage />,
+    element: <PrivateRoute><MovieDetailsPage></MovieDetailsPage></PrivateRoute>,
     loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
   },
   {
     path: "/add-movie",
-    element: <AddMoviePage></AddMoviePage>,
+    element: <PrivateRoute><AddMoviePage></AddMoviePage></PrivateRoute>,
   },
   {
     path: "/update-movie/:id",
-    element: <UpdateMoviePage></UpdateMoviePage>,
+    element: <PrivateRoute><UpdateMoviePage></UpdateMoviePage></PrivateRoute>,
   },
   {
     path: "/favorites",
-    element: <FavoritesPage></FavoritesPage>,
+    element: <PrivateRoute><FavoritesPage></FavoritesPage></PrivateRoute>,
   },
   {
     path: "/movie-news",

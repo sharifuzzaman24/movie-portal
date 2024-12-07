@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
 
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -17,13 +19,14 @@ const LoginPage = () => {
         const password = form.password.value;
         signInUser(email, password)
             .then((result) => {
-                console.log(result.user)
-                navigate('/')
+                const user = result.user;
+                setUser(user)
+                navigate(location?.state ? location.state : '/')
                 form.reset();
             })
-            .catch((error) => {
-                toast.error('failed to login')
-                console.log(error)
+            .catch((err) => {
+                setError({...error, login: err.code})
+                toast.error(`Failed to login, ${error.login}`)
             });
     }
 
@@ -46,8 +49,15 @@ const LoginPage = () => {
                             <div className='w-full mb-4'>
                                 <label className="block mb-2">Password</label>
                                 <input required name='password' type="password" placeholder="Enter your password..." className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800" />
+                                <div className='flex justify-between items-center mt-1'>
+                                {
+                                    error.login && <p className='text-red-600 text-sm'>{error.login}</p>
+                                }
+                                <p className='hover:text-red-600 hover:underline cursor-pointer'>Forgot Password?</p>
+                                </div>
 
                             </div>
+
                             <button className="w-full bg-red-600 text-white py-3 rounded hover:bg-red-700">Login</button>
                         </form>
                         <p className="mt-6 text-center">
