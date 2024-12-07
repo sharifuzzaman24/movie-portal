@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import Swal from 'sweetalert2';
 
 const FavoritesPage = () => {
     const [favorites, setFavorites] = useState([]);
+    console.log(favorites)
     const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
 
@@ -23,18 +25,6 @@ const FavoritesPage = () => {
             });
     }, [userEmail]);
 
-    const handleDeleteFavorite = (id) => {
-        fetch(`http://localhost:5000/favorites/${id}`, {
-            method: 'DELETE',
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setFavorites(favorites.filter((movie) => movie._id !== id));
-            })
-            .catch((err) => {
-                console.error('Error deleting favorite:', err);
-            });
-    };
 
     return (
         <>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
@@ -128,7 +128,7 @@ const MovieDetailsPage = () => {
                             <div className="flex space-x-4">
                                 <button onClick={() => handleAddFavorite(movie)} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Favorite</button>
                                 <button onClick={() => handleDelete(movie._id)} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Delete Movie</button>
-                                <a href="update-movie.html" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update Movie</a>
+                                <Link to={`/update-movie/${movie._id}`} href="update-movie.html" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update Movie</Link>
                             </div>
                         </div>
                     </div>
