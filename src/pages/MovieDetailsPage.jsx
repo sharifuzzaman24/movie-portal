@@ -16,44 +16,47 @@ const MovieDetailsPage = () => {
 
 
 
-    const handleAddFavorite = (id) => {
-       
-        const userEmail = user.email; 
+    const handleAddFavorite = (movie) => {
+        const { poster, title, genres, duration, releaseYear, summary, rating, _id } = movie;
+        const userEmail = user.email;
+        const favoriteMovie = {
+            poster,
+            title,
+            genres,
+            duration,
+            releaseYear,
+            summary,
+            rating,
+            _id,
+            userEmail
+        }
 
         fetch('http://localhost:5000/favorites', {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "content-type": "application/json"
             },
-            body: JSON.stringify({ email: userEmail, movieId: id }),
+            body: JSON.stringify(favoriteMovie)
         })
-            .then((res) => {
-                if (res.status === 400) {
-                    return res.json().then((data) => {
-                        throw new Error(data.message);
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === 'Movie added to favorites') {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'The movie has been added to your favorites.',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                } else if (data.message === 'Movie is already in your favorites') {
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: 'This movie is already in your favorites.',
+                        icon: 'warning',
+                        confirmButtonText: 'Got it'
                     });
                 }
-                if (!res.ok) {
-                    throw new Error('Failed to add to favorites');
-                }
-                return res.json();
             })
-            .then(() => {
-                Swal.fire({
-                    title: 'Added!',
-                    text: 'The movie has been added to your favorites.',
-                    icon: 'success',
-                    confirmButtonText: 'Okay',
-                });
-            })
-            .catch((err) => {
-                Swal.fire({
-                    title: 'Oops!',
-                    text: err.message || 'Something went wrong.',
-                    icon: 'error',
-                    confirmButtonText: 'Got it',
-                });
-            });
+
     };
 
 
@@ -123,7 +126,7 @@ const MovieDetailsPage = () => {
                             <p className="mb-6">Summary: {movie.summary}</p>
 
                             <div className="flex space-x-4">
-                                <button onClick={() => handleAddFavorite(movie._id)} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Favorite</button>
+                                <button onClick={() => handleAddFavorite(movie)} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Favorite</button>
                                 <button onClick={() => handleDelete(movie._id)} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Delete Movie</button>
                                 <a href="update-movie.html" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update Movie</a>
                             </div>
