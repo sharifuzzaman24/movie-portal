@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/movie-details/:id",
     element: <PrivateRoute><MovieDetailsPage></MovieDetailsPage></PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+    loader: ({ params }) => fetch(`https://movie-portal-server-orcin.vercel.app/movies/${params.id}`),
   },
   {
     path: "/add-movie",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
   {
     path: "/update-movie/:id",
     element: <PrivateRoute><UpdateMoviePage></UpdateMoviePage></PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+    loader: ({ params }) => fetch(`https://movie-portal-server-orcin.vercel.app/movies/${params.id}`),
   },
   {
     path: "/favorites",

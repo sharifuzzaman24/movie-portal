@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 
 
 const HomePage = () => {
+    
 
     // if you are looking at the code don't sapnd this the url id too long you finger will burn due to scrolling friction
     const trendingMovies = [
@@ -41,7 +42,7 @@ const HomePage = () => {
                     <h2 className="text-3xl font-bold mb-10 mt-10 text-center">Trending Now</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                         {trendingMovies.map(movie => (
-                            <div key={movie.id} className="bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div key={movie.id} className="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
                                 <img src={movie.poster} alt={movie.title} className="w-full h-48 object-cover rounded-md" />
                                 <h3 className="text-xl font-semibold mt-2">{movie.title}</h3>
                                 <p className="text-gray-500">{movie.releaseYear}</p>
@@ -54,7 +55,7 @@ const HomePage = () => {
                     <h2 className="text-3xl font-bold mb-10 mt-20 text-center">Upcoming Releases</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                         {upcomingMovies.map(movie => (
-                            <div key={movie.id} className="bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div key={movie.id} className="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
                                 <img src={movie.poster} alt={movie.title} className="w-full h-48 object-cover rounded-md" />
                                 <h3 className="text-xl font-semibold mt-2">{movie.title}</h3>
                                 <span className="text-gray-500">Release Date: {movie.releaseDate}</span>

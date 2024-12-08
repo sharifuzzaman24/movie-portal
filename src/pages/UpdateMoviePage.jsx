@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../components/Navbar';
@@ -108,8 +108,8 @@ const UpdateMoviePage = () => {
                 rating,
             };
 
-          
-            fetch(`http://localhost:5000/movies/${movie._id}`, {
+
+            fetch(`https://movie-portal-server-orcin.vercel.app/movies/${movie._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const UpdateMoviePage = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data)
+                    
                     if (data.modifiedCount > 0) {
                         Swal.fire({
                             position: "center",
@@ -131,7 +131,7 @@ const UpdateMoviePage = () => {
                     }
                 })
                 .catch((error) => {
-                    console.log(error)
+              
                     toast.error('Failed to update movie.');
                 });
         } else {
@@ -156,7 +156,7 @@ const UpdateMoviePage = () => {
                                 name="poster"
                                 defaultValue={movie.poster}
                                 placeholder="Movie poster URL..."
-                                className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800"
+                                className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800"
                             />
                             {formErrors.poster && <p className="text-red-600 text-sm">{formErrors.poster}</p>}
                         </div>
@@ -168,7 +168,7 @@ const UpdateMoviePage = () => {
                                 name="title"
                                 defaultValue={movie.title}
                                 placeholder="Movie title..."
-                                className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800"
+                                className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800"
                             />
                             {formErrors.title && <p className="text-red-600 text-sm">{formErrors.title}</p>}
                         </div>
@@ -180,7 +180,7 @@ const UpdateMoviePage = () => {
                                 defaultValue={movie.genres}
                                 multiple
                                 onChange={handleGenreChange}
-                                className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800"
+                                className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800"
                             >
                                 {genres.map((genre) => (
                                     <option key={genre} value={genre}>
@@ -189,7 +189,7 @@ const UpdateMoviePage = () => {
                                 ))}
                             </select>
                             {formErrors.genres && <p className="text-red-600 text-sm">{formErrors.genres}</p>}
-                            <p className="mt-2 text-sm text-gray-400">Hold `Ctrl` (or `Cmd` on Mac) to select multiple genres.</p>
+                            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Hold `Ctrl` (or `Cmd` on Mac) to select multiple genres.</p>
                         </div>
 
                         <div className="w-full">
@@ -199,14 +199,14 @@ const UpdateMoviePage = () => {
                                 name="duration"
                                 defaultValue={movie.duration}
                                 placeholder="Duration in minutes..."
-                                className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800"
+                                className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800"
                             />
                             {formErrors.duration && <p className="text-red-600 text-sm">{formErrors.duration}</p>}
                         </div>
 
                         <div className="w-full">
                             <label className="block mb-2">Release Year</label>
-                            <select defaultValue={movie.releaseYear} name="releaseYear" className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800">
+                            <select defaultValue={movie.releaseYear} name="releaseYear" className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800">
                                 <option value="" disabled>
                                     Choose a year
                                 </option>
@@ -225,7 +225,7 @@ const UpdateMoviePage = () => {
                                 name="summary"
                                 defaultValue={movie.summary}
                                 placeholder="Write a summary..."
-                                className="p-3 w-full rounded-lg border dark:border-gray-700 dark:bg-gray-800"
+                                className="p-3 w-full rounded-lg border dark:border-gray-700 bg-gray-200 border-gray-300 dark:bg-gray-800"
                             />
                             {formErrors.summary && <p className="text-red-600 text-sm">{formErrors.summary}</p>}
                         </div>

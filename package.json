@@ -16,9 +16,12 @@
     "match-sorter": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.0",
     "react-router-dom": "^7.0.2",
     "react-simple-star-rating": "^5.1.7",
+    "react-slick": "^0.30.2",
     "react-toastify": "^10.0.6",
+    "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.14.5",
     "swiper": "^11.1.15"
