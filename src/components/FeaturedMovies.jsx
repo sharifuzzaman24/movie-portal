@@ -27,17 +27,17 @@ const FeaturedMovies = () => {
         if (allMovies.length > 0) {
             const topRatedMovies = [...allMovies]
                 .sort((a, b) => b.rating - a.rating)
-                .slice(0, 6);
+                .slice(0, 7);
             setFeaturedMovies(topRatedMovies);
         }
     }, [allMovies]);
 
     return (
-        <section className="featured-movies mt-12">
-            <h2 className="text-center text-3xl font-bold mb-8">Featured Movies</h2>
+        <section className="featured-movies mb-20">
+            <h2 className="text-center text-3xl font-bold mb-10">Featured Movies</h2>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-items-center'>
+            <div className='flex flex-wrap justify-center gap-6'>
                 {featuredMovies.map((movie) => <MovieCard movie={movie} key={movie._id}></MovieCard>)}
             </div>
 
