@@ -73,6 +73,7 @@ const AddMoviePage = () => {
             });
     };
 
+
     return (
         <>
             <header>
