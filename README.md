@@ -1,13 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
 ### Movie Portal 🎥  
 
 A feature-rich movie portal designed to simplify exploring, managing, and interacting with your favorite movies. With an intuitive user interface, robust functionality, and responsiveness across devices, the platform ensures a seamless experience for users.
@@ -15,7 +5,7 @@ A feature-rich movie portal designed to simplify exploring, managing, and intera
 ---
 
 ### 🚀 Live Site  
-[Visit Movie Portal](#) (https://movie-portal-client-b951d.web.app/)
+[Visit Movie Portal](https://movie-portal-client-b951d.web.app/)
 
 ---
 
@@ -29,34 +19,21 @@ A feature-rich movie portal designed to simplify exploring, managing, and intera
 
 ---
 
-### 📜 Pages Overview  
+## Screenshots
+### Home Page
+![Home Page](#)
 
-- **Home Page**:  
-  - Interactive banner slider with highlights.  
-  - Featured Movies section showcasing the six highest-rated movies.  
-  - Additional sections for curated movie collections.  
+### All Movie Page
+![All Movie Page](#)
 
-- **Add Movie (Private Route)**:  
-  - Form with comprehensive validations to add movie details.  
+### Add Movie Page
+![Add Movie Page](#)
 
-- **All Movies**:  
-  - View all movies in a responsive 4-column layout.  
-  - Search functionality to filter by movie title.  
+### Favorite Movie Page
+![Favorite Movie Page](#)
 
-- **Movie Details (Private Route)**:  
-  - View detailed movie information with options to update, delete, or add to favorites.  
-
-- **Favorite Movies (Private Route)**:  
-  - Manage your favorite movies with options to delete from the list.  
-
-- **Authentication**:  
-  - Secure login and registration with Firebase authentication.  
-  - Social login via Google.  
-
-- **404 Page**:  
-  - A custom error page for undefined routes.  
-
----
+### Movie News Page
+![Movie News Page](#)
 
 ### 🔧 Tech Stack  
 
@@ -80,6 +57,11 @@ A feature-rich movie portal designed to simplify exploring, managing, and intera
 
 4. **Secure Environment**:  
    - Environment variables hide sensitive Firebase and MongoDB credentials.  
+
+## Author
+
+Sharifuzzaman Eusuf
+A passionate self-taught developer who loves technology and enjoys learning new things in the world of development. Check out my | [Portfolio](https://sharifuzzaman.vercel.app/)
 
 ---
 
