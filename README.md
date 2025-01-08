@@ -66,8 +66,8 @@ A feature-rich movie portal designed to simplify exploring, managing, and intera
 
 ## Author
 
-Sharifuzzaman Eusuf
-A passionate self-taught developer who loves technology and enjoys learning new things in the world of development. Check out my | [Portfolio](https://sharifuzzaman.vercel.app/)
+Sharifuzzaman Eusuf  
+[Portfolio](https://sharifuzzaman.vercel.app/) | [Linkedin Profile](https://www.linkedin.com/in/sharifuzzaman24/)
 
 ---
 
