@@ -21,19 +21,25 @@ A feature-rich movie portal designed to simplify exploring, managing, and intera
 
 ## Screenshots
 ### Home Page
-![Home Page](#)
+![Home Page](./src/assets/project-screenshots/home.png)
 
 ### All Movie Page
-![All Movie Page](#)
+![All Movie Page](./src/assets/project-screenshots/all-movie.png)
+
+### Movie Details Page
+![Movie Details Page](./src/assets/project-screenshots/details.png)
 
 ### Add Movie Page
-![Add Movie Page](#)
+![Add Movie Page](./src/assets/project-screenshots/add-movie.png)
+
+### Update Movie Page
+![Update Movie Page](./src/assets/project-screenshots/update.png)
 
 ### Favorite Movie Page
-![Favorite Movie Page](#)
+![Favorite Movie Page](./src/assets/project-screenshots/favotire.png)
 
 ### Movie News Page
-![Movie News Page](#)
+![Movie News Page](./src/assets/project-screenshots/news.png)
 
 ### 🔧 Tech Stack  
 

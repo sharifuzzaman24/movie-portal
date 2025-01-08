@@ -2,10 +2,10 @@ import React from 'react';
 
 const NewsLetterSection = () => {
   return (
-    <section className="bg-gray-200 dark:bg-gray-800 rounded-lg mb-20 text-white py-16 px-4">
+    <section className="bg-gray-200 dark:bg-gray-800 rounded-lg mb-20 text-gray-800 dark:text-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-        <p className="text-gray-300 mb-6">
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           Stay updated with the latest news, articles, and special offers delivered straight to your inbox.
         </p>
         <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -22,7 +22,7 @@ const NewsLetterSection = () => {
             Subscribe
           </button>
         </form>
-        <p className="text-sm text-gray-400 mt-4">
+        <p className="text-sm text-gray-400 dark:text-gray-700 mt-4">
           We respect your privacy. Unsubscribe at any time.
         </p>
       </div>
